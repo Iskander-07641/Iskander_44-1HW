@@ -3,8 +3,6 @@ from aiogram import types,Router,F
 from aiogram.filters import Command
 
 
-
-
 start_router = Router()
 
 @start_router.message(Command("start"))

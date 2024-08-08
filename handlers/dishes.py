@@ -5,6 +5,7 @@ import random
 from aiogram.types import FSInputFile
 dishes_router = Router()
 
+
 @dishes_router.message(F.text=="напитки")
 async def drinks(message: types.Message):
     photo=FSInputFile('photo/maxito.jpg')
