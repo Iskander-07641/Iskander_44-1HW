@@ -5,6 +5,7 @@ from aiogram.filters import Command
 
 start_router = Router()
 
+
 @start_router.message(Command("start"))
 async def send_welcome(message: types.Message):
     buttons = [

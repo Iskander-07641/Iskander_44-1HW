@@ -6,18 +6,18 @@ from aiogram.types import FSInputFile
 dishes_router = Router()
 
 
-@dishes_router.message(F.text=="напитки")
+@dishes_router.message(F.text == "напитки")
 async def drinks(message: types.Message):
-    photo=FSInputFile('photo/maxito.jpg')
+    photo = FSInputFile('photo/maxito.jpg')
     await bot.send_photo(
-         chat_id= message.from_user.id,
-        photo =photo,
-        caption = 'maxito'
+     chat_id = message.from_user.id,
+     photo = photo,
+     caption = 'maxito'
     )
     await bot.send_photo(
         chat_id=message.from_user.id,
         photo=FSInputFile('photo/milk_shake.jpg'),
-    caption = 'milk shake'
+        caption = 'milk shake'
     )
     await bot.send_photo(
         chat_id=message.from_user.id,
@@ -30,12 +30,13 @@ async def drinks(message: types.Message):
         caption='kofe'
     )
 
+
 @dishes_router.message(F.text=="еда")
 async def food(message: types.Message):
     await bot.send_photo(
          chat_id= message.from_user.id,
-        photo=FSInputFile('photo/burger.jpg'),
-        caption = 'Бургер из свежей говядены'
+         photo=FSInputFile('photo/burger.jpg'),
+         caption = 'Бургер из свежей говядены'
     )
     await bot.send_photo(
         chat_id=message.from_user.id,
