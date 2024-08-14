@@ -1,9 +1,12 @@
+# handlers/start.py
+
 from aiogram import types, Router, F
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 import re
+from database.db import Database
 
 start_router = Router()
 
@@ -96,7 +99,30 @@ async def process_cleanliness_rating(message: types.Message, state: FSMContext):
 async def process_extra_comments(message: types.Message, state: FSMContext):
     await state.update_data(extra_comments=message.text)
     data = await state.get_data()
-    await message.answer(f"Спасибо за ваш отзыв, {data['name']}!")
+
+    review_summary = (
+        f"Ваш отзыв:\n"
+        f"Имя: {data['name']}\n"
+        f"Телефон/Instagram: {data['phone_number']}\n"
+        f"Дата посещения: {data['visit_date']}\n"
+        f"Оценка еды: {data['food_rating']}\n"
+        f"Оценка чистоты: {data['cleanliness_rating']}\n"
+        f"Дополнительные комментарии: {data['extra_comments']}"
+    )
+
+    await message.answer(f"Спасибо за ваш отзыв, {data['name']}!\n\n{review_summary}")
+
+    db = Database('database/reviews.db')  # Убедитесь, что путь к базе данных правильный
+    db.add_review(
+        name=data['name'],
+        phone_number=data['phone_number'],
+        visit_date=data['visit_date'],
+        food_rating=data['food_rating'],
+        cleanliness_rating=data['cleanliness_rating'],
+        extra_comments=data['extra_comments']
+    )
+    db.close()
+
     await state.clear()
 
 
