@@ -1,9 +1,9 @@
-from aiogram import types, Router
+from aiogram import types, Router , F
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 import re
-from database.db import Database
+from handlers.database.db import Database
 
 dialogue_router = Router()
 
