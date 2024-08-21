@@ -3,7 +3,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 import re
-from handlers.database.db import Database
+from handlers.db import Database
 
 dialogue_router = Router()
 

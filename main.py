@@ -4,7 +4,7 @@ from handlers.recipes import recipe_router
 from handlers.start import start_router
 from handlers.my_info import my_info_router
 from handlers.dishes import dishes_router
-from handlers.database.db import Database
+from handlers.db import Database
 from handlers.dialogue import dialogue_router
 
 
