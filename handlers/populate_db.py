@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from database.chart_db import ChartDatabase
+from handlers.chart_db import ChartDatabase
 
 
 def populate_database():
