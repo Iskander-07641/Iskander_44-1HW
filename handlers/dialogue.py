@@ -1,9 +1,9 @@
-from aiogram import types, Router , F
+from aiogram import types, Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 import re
-from handlers.db import Database
+from db import Database
 
 dialogue_router = Router()
 
@@ -84,7 +84,7 @@ async def process_extra_comments(message: types.Message, state: FSMContext):
 
     await message.answer(f"Спасибо за ваш отзыв, {data['name']}!\n\n{review_summary}")
 
-    db = Database('database/reviews.db')  # Убедитесь, что путь к базе данных правильный
+    db = Database()
     db.add_review(
         name=data['name'],
         phone_number=data['phone_number'],

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from handlers.chart_db import ChartDatabase
+from db import Database
 
 
 def populate_database():
-    db = ChartDatabase()
+    db = Database()
 
     db.insert_category('Салаты')
     db.insert_category('Основные блюда')
