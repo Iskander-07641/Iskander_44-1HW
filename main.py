@@ -6,6 +6,7 @@ from handlers.start import start_router
 from handlers.my_info import my_info_router
 from handlers.dishes import dishes_router
 from handlers.dialogue import dialogue_router
+from handlers.crawler import crawler_router
 
 
 async def main():
@@ -15,6 +16,7 @@ async def main():
     dp.include_router(my_info_router)
     dp.include_router(dishes_router)
     dp.include_router(dialogue_router)
+    dp.include_router(crawler_router)
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
